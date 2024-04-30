@@ -10,7 +10,6 @@ class AuthController extends GetxController {
 
 
 
-
   ///login method//////////////////////////////////////////////////////////
 
   Future<UserCredential?> loginMethod({email,password,context}) async {
