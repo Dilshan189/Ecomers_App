@@ -1,9 +1,13 @@
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/consts/list.dart';
+import 'package:eroorhanler/controllers/auth_controller.dart';
 import 'package:eroorhanler/views/profile_screen/components/details_cart.dart';
 import 'package:eroorhanler/widgets_common/bg_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../auth_screen/login_screen.dart';
 
 class  ProfilSecreen extends StatelessWidget {
   const  ProfilSecreen ({super.key});
@@ -59,7 +63,10 @@ class  ProfilSecreen extends StatelessWidget {
                           color: whiteColor,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await Get.put(AuthController()).signoutMethod(context);
+                        Get.offAll(() => const LoginScreen());
+                      },
                         child: "logout".text.fontFamily(semibold).white.make(),
                     )
                   ],

@@ -23,6 +23,7 @@ const featuredCategories = "Featured Categories";
 const logout = "Log Out";
 const loggedin = "Log in successfully";
 const loggedout = "Log Out successfully";
+const singedin = "Your register successful";
 
 
 //home Strings
