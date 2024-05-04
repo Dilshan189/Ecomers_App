@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   changeScreen() {
     Future.delayed(const Duration(seconds: 3), () {
       //using getx
-     // Get.to(() => const LoginScreen());
+    //  Get.to(() => const LoginScreen());
 
       auth.authStateChanges().listen((User?user) {
         if(user == null && mounted){
@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
             appname.text.fontFamily(bold).size(22).white.make(),
             5.heightBox,
             appversion.text.white.make(),
-            Spacer(),
+            const Spacer(),
             credits.text.white.fontFamily(semibold).make(),
             30.heightBox,
           ],

@@ -53,7 +53,15 @@ class AuthController extends GetxController {
   storeUserDta({name, password, email}) async {
     if (usersCollection != null) {
       DocumentReference store =  firestore.collection(usersCollection!).doc(currentUser!.uid);
-      store.set({'name': name, 'password': password, 'email': email, 'imageUrl': '','id':currentUser!.uid},
+      store.set({'name': name,
+        'password': password,
+        'email': email,
+        'imageUrl': '',
+        'id':currentUser!.uid,
+        'cart_count':"00",
+        'whishlist_count':"00",
+        'order_count':"00"
+      },
       );
     } else {
       if (kDebugMode) {
