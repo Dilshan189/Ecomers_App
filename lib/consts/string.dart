@@ -24,6 +24,8 @@ const logout = "Log Out";
 const loggedin = "Log in successfully";
 const loggedout = "Log Out successfully";
 const singedin = "Your register successful";
+const  oldpass = "Old Password";
+const  newpass = "New Password";
 
 
 //home Strings
