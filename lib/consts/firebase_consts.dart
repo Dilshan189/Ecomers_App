@@ -8,3 +8,4 @@ User? currentUser = auth.currentUser;
 ///collections///////////////////////////////////////////////////////////////
 
 const usresCollection = "users";
+const productsCollection = "products";

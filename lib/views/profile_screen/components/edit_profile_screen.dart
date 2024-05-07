@@ -13,7 +13,7 @@ final dynamic data;
 
 
 
-  const EditprofileScreen({super.key,this.data});
+  const EditprofileScreen ({super.key,this.data});
 
   get imgUrl => null;
 
@@ -56,6 +56,7 @@ final dynamic data;
                 ourButton(color: redColor,onPress: (){
                   controller.changeImage(context);
                 },textColor: whiteColor,title: 'Change'),
+
                 const Divider(),
 
                 20.heightBox,
@@ -74,7 +75,7 @@ final dynamic data;
 
                 10.heightBox,
                 customTextField(
-                    controller: controller.oldpassController,
+                    controller: controller.newpassController,
                     hint: passwordHint,
                     title: newpass,
                     isPass:true),
@@ -86,8 +87,6 @@ final dynamic data;
                       width: context.screenWidth - 60 ,
                        child: ourButton(color: redColor,
                         onPress: () async {
-
-
 
                       controller.isloading(true);
 

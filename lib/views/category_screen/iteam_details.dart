@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 class IteamDetails extends StatelessWidget {
   final String? title;
-  const IteamDetails({super.key,required this.title});
+  final dynamic data;
+  const IteamDetails({super.key,required this.title,this.data});
 
 
   @override
@@ -38,11 +39,12 @@ class IteamDetails extends StatelessWidget {
                     VxSwiper.builder(
                       autoPlay: true,
                         height: 350,
-                        itemCount: 3,
+                        itemCount: data["p_imgs"].length,
                         aspectRatio: 16/9,
+                        viewportFraction: 1.0,
                         itemBuilder: (context,index) {
-                             return Image.asset(
-                                 imgFc5,
+                             return Image.network(
+                               data["p_imgs"][index],
                                   width: double.infinity,
                              fit: BoxFit.cover);
                     }),
@@ -57,15 +59,17 @@ class IteamDetails extends StatelessWidget {
                     ///rating //////////////////////////////////////////////////
                     
                     VxRating(
+                      isSelectable: false,
+                      value: double.parse(data["p_rating"]),
                       onRatingUpdate: (value){},
                       normalColor: textfieldGrey,
                       selectionColor: Colors.orangeAccent,
                       count: 5,
                       size: 25,
-                      stepInt: true,),
+                      ),
 
                     10.heightBox,
-                      "\$30.000".text.color(redColor).fontFamily(bold).size(18).make(),
+                      "${data["p_price"]}".text.color(redColor).fontFamily(bold).size(18).make(),
 
                     10.heightBox,
 
