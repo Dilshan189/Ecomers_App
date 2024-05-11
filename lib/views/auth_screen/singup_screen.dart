@@ -130,7 +130,7 @@ class _singupScreenState extends State<singupScreen> {
                             await controller.signupMethod(context:context,email:emailController.text,password:passwordController.text).then((value) {
                               return controller.storeUserDta(email: emailController.text, password: passwordController.text, name: nameController.text);
                             }).then((value) {
-                              //VxToast.show(context, msg: loggedin);
+                              VxToast.show(context, msg: loggedin);
                               Get.offAll(()=> const LoginScreen());
                             });
                           }catch (e) {

@@ -1,11 +1,17 @@
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 import '../models/category_model.dart';
 
 class ProductController extends GetxController {
 
+  var quantity = 0.obs;
+  var colorIndex = 0.obs;
+  var totalPrice = 0.obs;
   var subcat =[];
+
+
 
 
   getSubCategories(title) async{
@@ -19,6 +25,23 @@ class ProductController extends GetxController {
     }
   }
 
+changeColorIndex(index){
+    colorIndex = index;
 
+}
 
+increaseQuantity(totalQuantity){
+if(quantity.value < totalQuantity) {
+  quantity.value++;
+}
+}
+decreaseQuantity(){
+    if(quantity.value > 0) {
+      quantity.value--;
+    }
+}
+
+calculateTotalPrice(price){
+    totalPrice.value =  price * quantity.value;
+}
 }
