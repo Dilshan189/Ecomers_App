@@ -1,5 +1,6 @@
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/controllers/home_controller.dart';
+import 'package:eroorhanler/widgets_common/exit_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -38,6 +39,9 @@ class Home extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async{
+        showDialog(
+            barrierDismissible: false,
+            context: context, builder: (context) => exitDialog(context));
         return false;
       },
       child: Scaffold(

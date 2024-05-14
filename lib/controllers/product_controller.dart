@@ -1,3 +1,4 @@
+import 'package:eroorhanler/consts/consts.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -14,6 +15,8 @@ class ProductController extends GetxController {
 
 
 
+
+
   getSubCategories(title) async{
     subcat.clear();
     var data = await rootBundle.loadString("lib/services/category_mode.json");
@@ -26,7 +29,7 @@ class ProductController extends GetxController {
   }
 
 changeColorIndex(index){
-    colorIndex = index;
+    colorIndex  = index;
 
 }
 
@@ -44,4 +47,27 @@ decreaseQuantity(){
 calculateTotalPrice(price){
     totalPrice.value =  price * quantity.value;
 }
+
+addToCart({title,img,sellername,color,qty,tprice,context}) async {
+    await firestore.collection(cartCollection).doc().set({
+      'title':title,
+      'img':img,
+      'seller name':sellername,
+      'color':color,
+      'qty':qty,
+      'tprice':tprice,
+      'added_by':currentUser!.uid
+
+    }).catchError((error){
+      VxToast.show(context, msg: error.toString());
+    });
+}
+
+resetValues(){
+   totalPrice.value = 0;
+   quantity.value = 0;
+   colorIndex.value = 0;
+}
+
+
 }
