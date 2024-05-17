@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:share/share.dart';
 
 import '../chat_screen/chat_screen.dart';
 
@@ -35,10 +36,25 @@ class IteamDetails extends StatelessWidget {
           title: title!.text.color(fontGrey).fontFamily(bold).make(),
           actions: [
             IconButton(
-                onPressed: (){},
+                onPressed: (){
+                  final RenderBox box = context.findRenderObject() as RenderBox;
+                  Share.share(
+                      'Hi , Im using E-Comers App....',
+                      subject: 'E-Comers App',
+                      sharePositionOrigin: box.localToGlobal(Offset.zero) & box
+                          .size);
+                },
                 icon: const Icon(Icons.share,)),
             IconButton(
-                onPressed: (){},
+                onPressed: (){
+                  if(controller.isFav.value){
+                    controller.removeFromWishlist(data.id);
+                    controller.isFav(false);
+                  }else{
+                    controller.addToWishlist(data.id);
+                    controller.isFav(true);
+                  }
+                },
                 icon: const Icon(Icons.favorite_outline,)),
           ],
         ),
@@ -107,7 +123,10 @@ class IteamDetails extends StatelessWidget {
                               backgroundColor: Colors.white,
                               child: Icon(Icons.message_rounded,color: darkFontGrey,),
                             ).onTap(() {
-                              Get.to(()=> const ChatScreen());
+                              Get.to(()=> const ChatScreen(),
+
+                              arguments: [data['p_seller'],data['vendor_id']],
+                              );
                             })
                           ],
                         ).box.height(60).padding(const EdgeInsets.symmetric(horizontal: 16)).color(textfieldGrey).make(),

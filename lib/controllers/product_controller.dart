@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,7 @@ class ProductController extends GetxController {
 
 
 
-
+  var isFav = false.obs;
 
 
   getSubCategories(title) async{
@@ -68,6 +69,26 @@ resetValues(){
    quantity.value = 0;
    colorIndex.value = 0;
 }
+
+
+addToWishlist(docId)async {
+    await firestore
+        .collection(productsCollection)
+        .doc(docId).set({
+      'p_wishlist':FieldValue.arrayUnion([
+        currentUser!.uid])
+    },SetOptions(merge: true));
+}
+
+
+  removeFromWishlist(docId)async {
+    await firestore
+        .collection(productsCollection)
+        .doc(docId).set({
+      'p_wishlist':FieldValue.arrayRemove([
+        currentUser!.uid])
+    },SetOptions(merge: true));
+  }
 
 
 }

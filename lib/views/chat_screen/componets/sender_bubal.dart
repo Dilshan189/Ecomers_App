@@ -1,21 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eroorhanler/consts/consts.dart';
+import 'package:intl/intl.dart' as intl;
 
-Widget senderBubble(){
-  return  Container(
-    decoration: const  BoxDecoration(
-        color: redColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        )),
-    child: Column(
-      children: [
-        "Message here.......".text.white.size(16).make(),
-        10.heightBox,
-        "11.45 PM".text.color(whiteColor.withOpacity(0.5)).size(16).make(),
-      ],
+Widget senderBubble(DocumentSnapshot data){
+
+  var t = data['created_on']== null? DateTime.now():data['created_on'].toDate();
+  var  time = intl.DateFormat("h:mma").format(t);
+
+
+  return  Directionality(
+    textDirection: data['uid']== currentUser!.uid ? TextDirection.rtl : TextDirection.ltr,
+    child: Container(
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+          color: data['uid']== currentUser!.uid ? redColor : darkFontGrey,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          )),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          "${data['last_msg']}".text.white.size(16).make(),
+          10.heightBox,
+          time.text.color(whiteColor.withOpacity(0.5)).size(16).make(),
+        ],
+      ),
     ),
   );
 }
