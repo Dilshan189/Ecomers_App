@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/controllers/cart_controller.dart';
 import 'package:eroorhanler/services/filestore_service.dart';
+import 'package:eroorhanler/views/cart_screen/shipping_screen.dart';
 import 'package:eroorhanler/widgets_common/loading_indicator.dart';
 import 'package:eroorhanler/widgets_common/our_button.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,20 @@ class  CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
 
     return Scaffold(
+
       backgroundColor: whiteColor,
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        child: ourButton(
+                color: redColor,
+                onPress: (){
+                 Get.to(()=> const ShippingDetails()) ;
+                },
+                textColor: whiteColor,
+                title: "Proceed to shipping"
+            ),
+      ),
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: "Shopping cart".text.color(darkFontGrey).fontFamily(semibold).make(),
@@ -104,15 +118,15 @@ class  CartScreen extends StatelessWidget {
 
                     10.heightBox,
 
-                    SizedBox(
-                      width:context.screenWidth,
-                      child: ourButton(
-                          color: redColor,
-                          onPress: (){},
-                          textColor: whiteColor,
-                          title: "Proceed to shipping"
-                      ),
-                    ),
+                    // SizedBox(
+                    //   width:context.screenWidth,
+                    //   child: ourButton(
+                    //       color: redColor,
+                    //       onPress: (){},
+                    //       textColor: whiteColor,
+                    //       title: "Proceed to shipping"
+                    //   ),
+                    // ),
                   ],
                 ),
               );

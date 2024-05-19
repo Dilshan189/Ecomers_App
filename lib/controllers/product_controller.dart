@@ -71,24 +71,41 @@ resetValues(){
 }
 
 
-addToWishlist(docId)async {
+addToWishlist(docId, BuildContext context)async {
     await firestore
         .collection(productsCollection)
         .doc(docId).set({
       'p_wishlist':FieldValue.arrayUnion([
         currentUser!.uid])
     },SetOptions(merge: true));
+    isFav(false);
+
 }
 
 
-  removeFromWishlist(docId)async {
+  removeFromWishlist(docId,context)async {
     await firestore
         .collection(productsCollection)
         .doc(docId).set({
       'p_wishlist':FieldValue.arrayRemove([
         currentUser!.uid])
     },SetOptions(merge: true));
+
+    isFav(true);
+    VxToast.show(context, msg: "Add to wishlist");
+
+
   }
+
+checkIfFav(data,context)async{
+    if(data['p_wishlist'].contains(currentUser!.uid)){
+      isFav(true);
+    }else{
+      isFav(false);
+      VxToast.show(context, msg: "Removed from favorite");
+    }
+}
+
 
 
 }

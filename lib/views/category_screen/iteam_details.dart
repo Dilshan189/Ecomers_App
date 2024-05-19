@@ -1,3 +1,4 @@
+
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/consts/list.dart';
 import 'package:eroorhanler/controllers/product_controller.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:share/share.dart';
 
 import '../chat_screen/chat_screen.dart';
@@ -45,17 +47,22 @@ class IteamDetails extends StatelessWidget {
                           .size);
                 },
                 icon: const Icon(Icons.share,)),
-            IconButton(
-                onPressed: (){
-                  if(controller.isFav.value){
-                    controller.removeFromWishlist(data.id);
-                    controller.isFav(false);
-                  }else{
-                    controller.addToWishlist(data.id);
-                    controller.isFav(true);
-                  }
-                },
-                icon: const Icon(Icons.favorite_outline,)),
+            Obx(()=>
+               IconButton(
+                  onPressed: (){
+                    if(controller.isFav.value){
+                      controller.addToWishlist(data.id,context);
+                      //controller.isFav(false);
+                    }else{
+                      controller.removeFromWishlist(data.id,context);
+                     // controller.isFav(true);
+                    }
+                  },
+                  icon: Icon(
+                    Icons.favorite_outlined,
+                    color: controller.isFav.value ? redColor : darkFontGrey,
+                  )),
+            ),
           ],
         ),
         body:  Column(

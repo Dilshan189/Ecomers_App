@@ -105,6 +105,7 @@ class CategoryDetails extends StatelessWidget {
                             .outerShadowSm
                             .padding(const EdgeInsets.all(12))
                             .make().onTap(() {
+                              controller.checkIfFav(data[index],context);
                           Get.to(() => IteamDetails(title: "${data[index]["p_name"]}",data: data[index],));
                         });
                       },
