@@ -6,6 +6,7 @@ import 'package:eroorhanler/widgets_common/our_button.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+
 class ShippingDetails extends StatelessWidget {
   const ShippingDetails({super.key});
 
@@ -22,10 +23,12 @@ class ShippingDetails extends StatelessWidget {
         child: ourButton(
           onPress: (){
             if(controller.addressController.text.length < 10) {
-              Get.to(()=> const PaymentMethod());
+               VxToast.show(context, msg: "Please fill the form");
 
-            }{
-              VxToast.show(context,msg: "Please fill the form");
+            }
+            else
+            {
+              Get.to(()=> const PaymentMethod());
             }
           },
           color: redColor,

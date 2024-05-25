@@ -79,3 +79,7 @@ const video = "Video",
 const wishlist = "My Wishlist",
     orders = "My Orders",
     messages = "Messages";
+
+//payment methods string
+
+const paypal = "Paypal",stripe = "Stripe",cod ="Cash on Delivery";
