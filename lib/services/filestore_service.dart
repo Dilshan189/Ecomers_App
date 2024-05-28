@@ -54,4 +54,24 @@ static getChatMessages(dicId){
 }
 
 
+
+  ///get wishlist
+
+  static getWishlist(uid){
+    return firestore
+        .collection(wishlistCollection)
+        .where('added_by',isEqualTo: uid)
+        .snapshots();
+  }
+
+  ///deleteWishlist document
+
+  static deleteWishLiatDocument(docId){
+    return firestore
+        .collection(wishlistCollection)
+        .doc(docId)
+        .delete();
+  }
+
+
 }

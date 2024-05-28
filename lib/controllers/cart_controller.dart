@@ -20,6 +20,8 @@ class CartController extends GetxController {
   late dynamic productSnapshot;
   var products = [];
 
+  var placingOrder = false.obs;
+
 
 
 
@@ -35,6 +37,9 @@ class CartController extends GetxController {
   }
 
   placeMyorder({required orderPaymentMethod,  required totalAmount}) async {
+    placingOrder(true);
+
+
     await getPrtoductDetails();
     await firestore.collection(ordersCollection).doc().set({
       'order_code':"233981237",
@@ -65,6 +70,7 @@ class CartController extends GetxController {
       products.add({
         'color':productSnapshot[i]['color'],
         'img':productSnapshot[i]['img'],
+        'vendor_id':productSnapshot[i]['vendor_id'],
         'qty':productSnapshot[i]['qty'],
         'title':productSnapshot[i]['title'],
 

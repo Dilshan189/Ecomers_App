@@ -33,7 +33,9 @@ const  newpass = "New Password";
 const home = "Home" ,
     categories = "Categories" ,
     cart = "cart" ,
-    account = "Account";
+    account = "Account",
+    Wishlist = "Wishlist";
+
 
 
 //home screen String

@@ -49,6 +49,8 @@ const icTwitterLogo = "assets/icons/twitter_logo.png";
 const icWallet = "assets/icons/wallet.png";
 const icWhiteTick = "assets/icons/white_tick.png";
 const icWholeSale = "assets/icons/wholesale.png";
+const icWishlist = "assets/icons/wishlist .png";
+const icApple ="assets/icons/apple.png";
 
 //images
 
@@ -101,6 +103,7 @@ const imgPi4 = "assets/images/pi4.jpg";
 const imgPi5 = "assets/images/pi5.jpg";
 const imgProfile2 = "assets/images/profile_image_joya_ahsan.jpg";
 const imgProfile = "assets/images/profile_image.png";
+const imgProfile3 = "assets/images/WhatsApp Image 2023-07-10 at 14.07.26.jpg";
 const imgRavePayment = "assets/images/rave_payment.png";
 const imgRozarpay = "assets/images/rozarpay.png";
 const imgS1 = "assets/images/s1.jpg";

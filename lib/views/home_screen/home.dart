@@ -7,6 +7,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../cart_screen/cart_screen.dart';
 import '../category_screen/category_screeen.dart';
+import '../category_screen/wish_scrren.drt.dart';
 import '../profile_screen/profile_screen.dart';
 import 'home_screen.dart';
 
@@ -23,7 +24,9 @@ class Home extends StatelessWidget {
       BottomNavigationBarItem(icon: Image.asset(icHome,width: 26),label: home),
       BottomNavigationBarItem(icon: Image.asset(icCategories,width: 26),label:categories ),
       BottomNavigationBarItem(icon: Image.asset(icCart,width: 26),label: cart),
+      BottomNavigationBarItem(icon: Image.asset(icWishlist,width: 26),label: Wishlist),
       BottomNavigationBarItem(icon: Image.asset(icProfile,width: 26),label: account),
+
 
 
     ];
@@ -32,7 +35,9 @@ class Home extends StatelessWidget {
       const HomeScreen(),
       const categoryScreen(),
       const CartScreen(),
+      const wishlistscrren(),
       const ProfilSecreen(),
+
 
 
     ];

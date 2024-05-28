@@ -1,4 +1,3 @@
-
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/consts/list.dart';
 import 'package:eroorhanler/controllers/product_controller.dart';
@@ -52,11 +51,25 @@ class IteamDetails extends StatelessWidget {
                   onPressed: (){
                     if(controller.isFav.value){
                       controller.addToWishlist(data.id,context);
+
                       //controller.isFav(false);
                     }else{
                       controller.removeFromWishlist(data.id,context);
+                     // Get.to(()=> const wishlistscrren());
+
+                      controller.addTowishlist(
+                          color: data['p_colors'][controller.colorIndex.value],
+                          context: context,
+                          img: data['p_imgs'][0],
+                          qty: controller.quantity.value,
+                          sellername: data['p_name'],
+                          //title: data['title'],
+                          tprice: controller.totalPrice.value
+                      );
+
                      // controller.isFav(true);
                     }
+
                   },
                   icon: Icon(
                     Icons.favorite_outlined,
@@ -297,6 +310,7 @@ class IteamDetails extends StatelessWidget {
                         controller.addToCart(
                           color: data['p_colors'][controller.colorIndex.value],
                           context: context,
+                          vendorID:data['vendor_id'],
                           img: data['p_imgs'][0],
                           qty: controller.quantity.value,
                           sellername: data['p_name'],

@@ -49,13 +49,14 @@ calculateTotalPrice(price){
     totalPrice.value =  price * quantity.value;
 }
 
-addToCart({title,img,sellername,color,qty,tprice,context}) async {
+addToCart({title,img,sellername,color,qty,tprice,context,vendorID}) async {
     await firestore.collection(cartCollection).doc().set({
       'title':title,
       'img':img,
       'seller name':sellername,
       'color':color,
       'qty':qty,
+      'vendor_id':vendorID,
       'tprice':tprice,
       'added_by':currentUser!.uid
 
@@ -105,6 +106,22 @@ checkIfFav(data,context)async{
       VxToast.show(context, msg: "Removed from favorite");
     }
 }
+
+
+  addTowishlist({title,img,sellername,color,qty,tprice,context}) async {
+    await firestore.collection(wishlistCollection).doc().set({
+      'title':title,
+      'img':img,
+      'seller name':sellername,
+      'color':color,
+      'qty':qty,
+      'tprice':tprice,
+      'added_by':currentUser!.uid
+
+    }).catchError((error){
+      VxToast.show(context, msg: error.toString());
+    });
+  }
 
 
 
