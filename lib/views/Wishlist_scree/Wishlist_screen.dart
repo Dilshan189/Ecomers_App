@@ -4,14 +4,15 @@ import 'package:eroorhanler/services/filestore_service.dart';
 import 'package:eroorhanler/widgets_common/loading_indicator.dart';
 import 'package:flutter/widgets.dart';
 
-class wishlist extends StatelessWidget {
-  const wishlist({super.key});
+class wishlistaa extends StatelessWidget {
+  const wishlistaa ({super.key});
 
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
         title: "My Wishlist".text.color(darkFontGrey).fontFamily(semibold).make(),
       ),

@@ -3,7 +3,9 @@ import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/consts/list.dart';
 import 'package:eroorhanler/controllers/auth_controller.dart';
 import 'package:eroorhanler/controllers/profile_controler.dart';
-import 'package:eroorhanler/services/filestore_service.dart';
+import 'package:eroorhanler/views/Wishlist_scree/Wishlist_screen.dart';
+import 'package:eroorhanler/views/category_screen/wish_scrren.drt.dart';
+import 'package:eroorhanler/views/chat_screen/message_screen.dart';
 import 'package:eroorhanler/views/profile_screen/components/details_cart.dart';
 import 'package:eroorhanler/widgets_common/bg_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../auth_screen/login_screen.dart';
 import 'package:eroorhanler/views/profile_screen/components/edit_profile_screen.dart';
+
+import '../orders_screen/order_screen.dart';
 
 class ProfilSecreen extends StatelessWidget {
   const ProfilSecreen({super.key});
@@ -55,7 +59,7 @@ class ProfilSecreen extends StatelessWidget {
 
 
                             Get.off(() =>
-                                EditprofileScreen(
+                                EditProfileScreen(
                                   data: data,
                                 ));
                           }),
@@ -149,6 +153,16 @@ class ProfilSecreen extends StatelessWidget {
                           itemCount: profileButtonList.length,
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
+                              onTap: (){
+                                switch (index) {
+                                  case 0 :Get.to(()=> const OrderScreen());
+                                  break;
+                                  case 1: Get.to(()=> const wishlistscrren());
+                                  break;
+                                  case 2: Get.to(()=> const MessageScreen());
+                                  break;
+                                }
+                              },
                               leading: Image.asset(
                                 profileButtonIcon[index],
                                 width: 22,

@@ -73,9 +73,11 @@ static getChatMessages(dicId){
         .delete();
   }
 
-
-  static getAllOrders(){
-    return firestore.collection(ordersCollection).where('order_by',isEqualTo: currentUser!.uid).snapshots();
+  static getAllOrders(uid){
+    return firestore
+        .collection(wishlistCollection)
+        .where('order_by',isEqualTo: uid)
+        .snapshots();
 
   }
 
