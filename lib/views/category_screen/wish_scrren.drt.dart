@@ -20,7 +20,7 @@ class wishlistscrren extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         title: 'WishList'.text.color(darkFontGrey).fontFamily(semibold).make(),
       ),
       body: StreamBuilder(

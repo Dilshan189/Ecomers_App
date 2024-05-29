@@ -1,6 +1,7 @@
 import 'package:eroorhanler/consts/consts.dart';
 import 'package:eroorhanler/consts/list.dart';
 import 'package:eroorhanler/controllers/product_controller.dart';
+import 'package:eroorhanler/views/category_screen/wish_scrren.drt.dart';
 import 'package:eroorhanler/widgets_common/our_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -52,10 +53,9 @@ class IteamDetails extends StatelessWidget {
                     if(controller.isFav.value){
                       controller.addToWishlist(data.id,context);
 
-                      //controller.isFav(false);
                     }else{
                       controller.removeFromWishlist(data.id,context);
-                     // Get.to(()=> const wishlistscrren());
+                      Get.to(()=> const wishlistscrren());
 
                       controller.addTowishlist(
                           color: data['p_colors'][controller.colorIndex.value],

@@ -74,4 +74,17 @@ static getChatMessages(dicId){
   }
 
 
+  static getAllOrders(){
+    return firestore.collection(ordersCollection).where('order_by',isEqualTo: currentUser!.uid).snapshots();
+
+  }
+
+  static getwishlist(){
+    return firestore.collection(productsCollection).where('p_wishlist',arrayContains:currentUser!.uid).snapshots();
+  }
+
+ static getAllMessages(){
+    return firestore.collection(chatsCollection).where('formId',isEqualTo: currentUser!.uid).snapshots();
+ }
+
 }
